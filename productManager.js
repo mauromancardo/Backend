@@ -1,8 +1,8 @@
 class ProductManager {
-    constructor (){
-        this.productos = [];
-
+    constructor (filePatch){
+        this.filePatch = filePatch;
     };
+    
     getProductos(){
         console.log(this.productos);
     }
