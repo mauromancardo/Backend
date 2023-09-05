@@ -25,5 +25,14 @@
 		"code": "3",
 		"stock": "5",
 		"id": 3
+	},
+	{
+		"nombre": "naranpol",
+		"description": "bebida",
+		"precio": "100",
+		"img": "./imagen/coca.png",
+		"code": "4",
+		"stock": "5",
+		"id": 4
 	}
 ]

@@ -32,30 +32,47 @@ import * as FileSystem from "fs";
           "utf-8"
         );
         const contenidoJson = JSON.parse(contenido);
-        // validar codigo unico
-        const codeExist = contenidoJson.some(
-          (product) => product.code === productInfo.code
-        );
+const camposObligatorios = [
+    "nombre",
+		"description",
+		"precio",
+		"img",
+		"code",
+		"stock"
+];
+const camposFaltantes = camposObligatorios.filter(
+  (campos) => !productInfo.hasOwnProperty(campos)
+);
+if (camposFaltantes.length > 0){
+  throw new Error ("todos los campos son obligatorios");
+}
+else{
+  // validar codigo unico
+  const codeExist = contenidoJson.some(
+    (product) => product.code === productInfo.code
+  );
 
-        if (codeExist) {
-          console.log(`codigo ${productInfo.code} ya existe `);
-        } else {
-          //id autoincrementable
-          const id = contenidoJson.reduce((maxId, product) => {
-            return product.id > maxId ? product.id : maxId;
-          }, 0);
+  if (codeExist) {
+    console.log(`codigo ${productInfo.code} ya existe `);
+  } else {
+    //id autoincrementable
+    const id = contenidoJson.reduce((maxId, product) => {
+      return product.id > maxId ? product.id : maxId;
+    }, 0);
 
-          const newId = id + 1;
-          productInfo.id = newId;
-          //agregar producto
-          contenidoJson.push(productInfo);
-          await FileSystem.promises.writeFile(
-            this.filePatch,
-            JSON.stringify(contenidoJson, null, "\t")
-          );
-          console.log("producto agregado");
-        }
-      }
+    const newId = id + 1;
+    productInfo.id = newId;
+    //agregar producto
+    contenidoJson.push(productInfo);
+    await FileSystem.promises.writeFile(
+      this.filePatch,
+      JSON.stringify(contenidoJson, null, "\t")
+    );
+    console.log("producto agregado");
+  }
+}}
+
+       
     } catch (error) {
       console.log(error.message);
       throw error;

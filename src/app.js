@@ -38,6 +38,14 @@ app.get("/products", async (req, res) => {
       code: "3",
       stock: "5",
     });
+    await managerProductService.createProduct({
+      nombre: "naranpol",
+      description: "bebida",
+      precio: "100",
+      img: "./imagen/coca.png",
+      code: "4",
+      stock: "5",
+    });
 
     const products = await managerProductService.getProduct();
     /* res.send(products); */
