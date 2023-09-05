@@ -1,7 +1,6 @@
 import * as FileSystem from "fs";
-import express from "express";
 
-export class ProductManagerFiles {
+ class ProductManagerFiles {
   constructor(filePatch) {
     this.filePatch = filePatch;
   }
@@ -16,7 +15,7 @@ export class ProductManagerFiles {
           "utf-8"
         );
         const contenidoJson = JSON.parse(contenido);
-        console.log(contenidoJson);
+        return contenidoJson;
       } else {
         throw new Error("No es posible leer el producto");
       }
@@ -74,7 +73,7 @@ export class ProductManagerFiles {
         //metodo find
         const producto = contenidoJson.find((product) => product.id === id);
         if (producto) {
-          console.log(`id del producto${id}`, producto);
+          return producto;
         } else {
           console.log(" no se encontro el producto");
         }
@@ -136,7 +135,8 @@ export class ProductManagerFiles {
   }
 }
 
-const operations = async () => {
+
+/* const operations = async () => {
   try {
     const manager = new ProductManagerFiles("./src/files/productoss.json");
     await manager.createProduct({
@@ -165,11 +165,13 @@ const operations = async () => {
     });
 
     await manager.getProductById();
-    /* await manager.modificarProducto(1, { description: "gaseosa" }); */
-    /* await manager.eliminarProducto(2); */
+    await manager.modificarProducto(1, { description: "gaseosa" });
+    await manager.eliminarProducto(2); 
     await manager.getProduct();
   } catch (error) {
     console.log(error.message);
   }
-};
-operations();
+}; */
+
+
+export {ProductManagerFiles};

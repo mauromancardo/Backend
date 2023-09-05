@@ -1,15 +1,21 @@
 [
 	{
-		"hola": "hola"
-	},
-	{
 		"nombre": "coca cocla",
-		"description": "gaseosa",
+		"description": "bebida",
 		"precio": "700",
 		"img": "./imagen/coca.png",
 		"code": "1",
 		"stock": "5",
 		"id": 1
+	},
+	{
+		"nombre": "fanta",
+		"description": "bebida",
+		"precio": "800",
+		"img": "./imagen/coca.png",
+		"code": "2",
+		"stock": "5",
+		"id": 2
 	},
 	{
 		"nombre": "sprite",
@@ -19,14 +25,5 @@
 		"code": "3",
 		"stock": "5",
 		"id": 3
-	},
-	{
-		"nombre": "fanta",
-		"description": "bebida",
-		"precio": "800",
-		"img": "./imagen/coca.png",
-		"code": "2",
-		"stock": "5",
-		"id": 4
 	}
 ]
