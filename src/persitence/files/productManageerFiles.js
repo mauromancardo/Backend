@@ -6,7 +6,7 @@ import * as FileSystem from "fs";
   }
   async fileExist() {
     return FileSystem.existsSync(this.filePatch);
-  }
+  };
   async getProduct() {
     try {
       if (this.fileExist()) {

@@ -1,10 +1,16 @@
 import Express from "express";
-import { ProductManagerFiles } from "./persitence/productManageerFiles.js";
+import { ProductManagerFiles } from "./persitence/files/productManageerFiles.js";
 const port = 8080;
-
 const app = Express();
+import { productsRouter } from "./routes/products.routes.js";
+import { cartsRouter } from "./routes/carts.routes.js";
 
 app.listen(port, () => console.log("servidor funcionando"));
+
+
+//routes
+app.use("/api/products",productsRouter);
+app.use("/api/carts",cartsRouter);
 
 const managerProductService = new ProductManagerFiles(
   "./src/files/productoss.json"
